@@ -1,0 +1,69 @@
+const http       = require("http");
+const path       = require("path");
+const express    = require("express");
+const bodyParser = require("body-parser");
+const logger     = require('morgan');
+const helmet     = require('helmet');
+const cors       = require('cors');
+
+
+const config_database        = require('./config/mongo');
+const config_app             = require('./config/app.js');
+const  {databaseInitializer} = require('./helpers/mongo');
+//seeder                     = require('./seeds');
+const  Scheduler             = require('./services/Scheduler');
+
+const {app_route}    = require('./routes');
+
+var app = express();
+
+let dir_base = __dirname;
+
+app.use(
+    helmet({
+      contentSecurityPolicy: false,
+    })
+);
+
+if(config_app.app.environment == "development"){
+   app.use(logger('dev'));
+}
+
+app.use(bodyParser.json());
+
+app.use(bodyParser.urlencoded({
+	extended: true
+}));
+
+app.use(cors());
+
+databaseInitializer(config_database.database.mongodb.host);
+
+app.use(express.static(path.join(dir_base, 'public')));
+
+app.use((request, response, next) => {
+    response.setHeader('Cache-Control', 'no-cache, no-store');
+    next();
+});
+
+
+app.get('/health', function (request, response) {
+    return response.sendStatus(200);
+});
+    
+app.use('/api/v1/app', app_route);
+
+app.get('*', (request, response) => {                       
+    response.sendFile(path.resolve(__dirname, 'public', 'index.html'));                               
+});
+
+app.disable('x-powered-by');
+
+app.set('port', config_app.app.port);
+
+http.createServer(app).listen(app.get('port'), function () {
+    Scheduler.runner();
+	console.log("Express server listening on port " + app.get('port'));
+});
+
+module.exports = app;

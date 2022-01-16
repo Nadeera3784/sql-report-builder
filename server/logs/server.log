@@ -1,0 +1,14 @@
+error: Dec-01-2021 03:14:50: 	error id is not defined
+error: Dec-01-2021 03:15:00: 	error id is not defined
+error: Dec-01-2021 03:15:10: 	error id is not defined
+error: Dec-01-2021 03:15:20: 	error id is not defined
+error: Dec-01-2021 03:15:30: 	error id is not defined
+error: Dec-01-2021 03:15:40: 	error id is not defined
+error: Dec-01-2021 03:16:00: 	error id is not defined
+error: Dec-01-2021 03:16:20: 	error id is not defined
+error: Dec-01-2021 03:16:30: 	error id is not defined
+error: Dec-01-2021 03:16:40: 	error id is not defined
+error: Dec-01-2021 03:16:50: 	error id is not defined
+error: Dec-01-2021 03:17:00: 	error id is not defined
+error: Dec-01-2021 03:17:10: 	error id is not defined
+error: Dec-06-2021 02:06:09: 	error BSON field 'findAndModify.query' is the wrong type 'objectId', expected type 'object'
