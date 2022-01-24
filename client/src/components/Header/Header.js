@@ -11,7 +11,7 @@ function Header(props) {
     
 
     return (
-        <header className="flex flex-none items-center h-16 bg-white shadow-sm fixed top-0 right-0 left-0 z-30 lg:pl-64">
+        <header className={`flex flex-none items-center h-16 bg-white shadow-sm fixed top-0 right-0 left-0 z-30 ${(props.desktopSidebarOpen || props.mobileSidebarOpen) ? (props.desktopSidebarOpen ? 'lg:pl-64' : 'pl-64') : ''}`}>
             <div className="flex justify-between max-w-10xl mx-auto px-4 lg:px-8 w-full">
                 <div className="flex items-center space-x-2">
                     <div className="hidden lg:block">

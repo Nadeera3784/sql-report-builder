@@ -6,7 +6,18 @@ const http = axios.create({
     //baseURL: 'http://127.0.0.1:3030/api/v1',
 })
 
-http.defaults.headers.common['Authorization'] = `Bearer ${AuthService.getToken()}`;
+
+http.interceptors.request.use(async function (config) {
+    const token = await AuthService.getToken();
+    
+    if (token) {
+        config.headers.common['Authorization'] = `Bearer ${token}`;
+    }
+
+    return config;
+}, function (error) {
+    return Promise.reject(error);
+});
 
 http.interceptors.response.use(function (response) {
     return Promise.resolve(response);

@@ -23,6 +23,7 @@ const AppReducer = (state, action) => {
             };
         case AppConstants.AUTH_SET_TOKEN:
             localStorage.setItem("o2o-app-key", action.payload);
+            return state;
         case AppConstants.AUTH_SET_USER:
             return {
                 ...state, 

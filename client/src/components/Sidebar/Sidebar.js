@@ -13,7 +13,7 @@ function Sidebar(props) {
     }, [location.pathname]);
 
     return (
-        <nav className={`flex flex-col fixed top-0 left-0 bottom-0 w-full lg:w-64 h-full bg-white border-r border-gray-200 z-50 transform transition-transform duration-500 ease-out ${props.desktopSidebarOpen ? "translate-x-0" : "lg:-translate-x-full"}  `} aria-label="Main Sidebar Navigation">
+        <nav className={`flex flex-col fixed top-0 left-0 bottom-0 w-full lg:w-64 h-full bg-white border-r border-gray-200 z-50 transform transition-transform duration-500 ease-out ${(props.desktopSidebarOpen || props.mobileSidebarOpen) ? "translate-x-0" : (props.desktopSidebarOpen ? "lg:-translate-x-full" : "-translate-x-full")}`} aria-label="Main Sidebar Navigation">
             <div className="h-16 flex-none flex items-center justify-between lg:justify-center px-4 w-full">
 
                 <Link to="/" className="inline-flex items-center space-x-2 font-bold text-lg tracking-wide text-gray-600 hover:text-gray-500">
