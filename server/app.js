@@ -12,8 +12,9 @@ const config_app             = require('./config/app.js');
 const  {databaseInitializer} = require('./helpers/mongo');
 //const seeder                     = require('./seeds');
 const  Scheduler             = require('./services/Scheduler');
+const  {TestController}      = require('./controllers');
 
-const {app_route}    = require('./routes');
+const {app_route}            = require('./routes');
 
 var app = express();
 
@@ -37,7 +38,7 @@ app.use(bodyParser.urlencoded({
 
 app.use(cors());
 
-databaseInitializer(config_database.database.mongodb.host);
+//databaseInitializer(config_database.database.mongodb.host);
 
 app.use(express.static(path.join(dir_base, 'public')));
 
@@ -51,6 +52,8 @@ app.get('/health', function (request, response) {
     return response.sendStatus(200);
 });
     
+app.get('/health_mongo', TestController.databaseCheck);
+
 app.use('/api/v1/app', app_route);
 
 app.get('*', (request, response) => {                       
