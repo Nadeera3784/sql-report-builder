@@ -10,7 +10,7 @@ const cors       = require('cors');
 const config_database        = require('./config/mongo');
 const config_app             = require('./config/app.js');
 const  {databaseInitializer} = require('./helpers/mongo');
-//const seeder                     = require('./seeds');
+const seeder                  = require('./seeds');
 const  Scheduler             = require('./services/Scheduler');
 const  {TestController}      = require('./controllers');
 
@@ -38,7 +38,7 @@ app.use(bodyParser.urlencoded({
 
 app.use(cors());
 
-//databaseInitializer(config_database.database.mongodb.host);
+databaseInitializer(config_database.database.mongodb.host);
 
 app.use(express.static(path.join(dir_base, 'public')));
 
