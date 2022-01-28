@@ -20,9 +20,15 @@ const AppController = {
     
     databaseCheck(request, response, next){
       mongoose.connect(config_database.database.mongodb.host, {useNewUrlParser: true, ssl: true, sslValidate: false, sslCA: `rds-combined-ca-bundle.pem`}).then(function(client){
-        console.log('Mongoose connected:');
+        return response.status(200).json({
+          type: AppConstants.RESPONSE_SUCCESS,
+          message : "Mongoose connected:",
+        });
       }).catch(function(error){
-        console.log('Mongoose connection URI error:',  error);
+        return response.status(400).json({
+          type: AppConstants.RESPONSE_ERROR,
+          message : 'Mongoose connection URI error:' +  error,
+        });
       }); 
     }
     
