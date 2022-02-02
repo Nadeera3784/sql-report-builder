@@ -249,6 +249,11 @@ function Builder(props) {
         }
     }
 
+    const formatAttributes = function(attribute){
+        let str = attribute.charAt(0).toUpperCase() + attribute.slice(1);
+        return str.split('_').join(' ');
+    }
+
     return (
         <main className="w-full mx-auto  px-4 sm:px-6 lg:px-8 pt-4">
             <Helmet>
@@ -273,7 +278,7 @@ function Builder(props) {
                             Report Builder
                         </div>
                         <div>
-                           <button type="button" onClick={() => onClickMagicLinkGenerate()} className="w-full h-12 px-6 focus:outline-none px-3 py-2 leading-6 rounded border border-gray-300 bg-white text-gray-800 shadow-sm hover:text-gray-800 hover:bg-gray-100 hover:border-gray-300 hover:shadow  focus:ring-opacity-25 active:bg-white active:border-white active:shadow-none">
+                           {/* <button type="button" onClick={() => onClickMagicLinkGenerate()} className="w-full h-12 px-6 focus:outline-none px-3 py-2 leading-6 rounded border border-gray-300 bg-white text-gray-800 shadow-sm hover:text-gray-800 hover:bg-gray-100 hover:border-gray-300 hover:shadow  focus:ring-opacity-25 active:bg-white active:border-white active:shadow-none">
                             <span>
                                     
                                 {linkGenerating &&
@@ -286,7 +291,7 @@ function Builder(props) {
                                     <svg className="hi-solid hi-check-circle inline-block w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"/></svg>
                                 }
                                 Magic Link Generate </span>
-                            </button>
+                            </button> */}
                         </div>
                     </div>
                     <div>
@@ -371,7 +376,7 @@ function Builder(props) {
                                             <div className="p-4 rounded-md md:p-5 border m-2 flex justify-between text-gray-700 bg-white">
                                                 <label className="inline-flex items-center ml-6">
                                                     <input type="checkbox" name="attributes[]" value={item}  ref={checkRef} onChange={(event) => onChangeAttribute(event)} className="border border-gray-200 rounded h-4 w-4 text-indigo-500 focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50 focus:outline-none ptx" />
-                                                    <span className="ml-2">{item}</span>
+                                                    <span className="ml-2">{formatAttributes(item)}</span>
                                                 </label>
                                             </div>
                                         </div>

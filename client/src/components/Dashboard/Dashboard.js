@@ -35,11 +35,6 @@ function Dashboard() {
         })
     } 
 
-
-    useEffect(() => {
-      console.log('dashboard state', state);
-  }, []);
-
     useEffect(() => {
         initCustomReports();
     }, [componentUdpate]);

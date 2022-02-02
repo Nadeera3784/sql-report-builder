@@ -30,7 +30,9 @@ function Login(props) {
     const { type , token} = useQueryParams();
     
     if(type && type === "auto"){
-      httpservice.get('https://app.o2o.com/api/organizer/sso/verification?token='+token).then(async function (verificationData) {
+      //https://app.dev.cloud.digitalmediasolutions.com.au
+      //https://app.o2o.com/api/organizer/sso/auth
+      httpservice.get('https://app.dev.cloud.digitalmediasolutions.com.au/api/organizer/sso/verification?token='+token).then(async function (verificationData) {
           const authPayload = {
               'o2o_id'    : verificationData.data.data._id,
               'org_id'    : verificationData.data.data.current_org_id
@@ -61,9 +63,9 @@ function Login(props) {
       validate,
       onSubmit: async function(payload, {resetForm}){
         setLoading(true);
-        httpservice.post('https://app.o2o.com/api/organizer/sso/auth', payload).then(async function (response) {
+        httpservice.post('https://app.dev.cloud.digitalmediasolutions.com.au/api/organizer/sso/auth', payload).then(async function (response) {
           const token = response.data.token;
-          const verificationData = await httpservice.get('https://app.o2o.com/api/organizer/sso/verification?token='+token);
+          const verificationData = await httpservice.get('https://app.dev.cloud.digitalmediasolutions.com.au/api/organizer/sso/verification?token='+token);
           const authPayload = {
             'o2o_id'    : verificationData.data.data._id,
             'org_id'    : verificationData.data.data.current_org_id

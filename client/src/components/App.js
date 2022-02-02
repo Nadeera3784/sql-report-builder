@@ -1,4 +1,4 @@
-import {BrowserRouter as Router, Switch,  Route} from "react-router-dom";
+import {BrowserRouter as Router, Switch,  Route, Redirect} from "react-router-dom";
 
 import Layout             from './Layout/Layout';
 import Dashboard          from './Dashboard/Dashboard';
@@ -12,10 +12,21 @@ import Report             from './Builder/Report';
 import Login              from './Login/Login';
 
 function App() {
+
+
   return (
     <Router>
         <Switch>
-        <Route path="/login" component={Login}></Route>
+         <Route
+              exact
+              path="/"
+              render={ () => {
+                  return (
+                    <Redirect to="/dashboard" />
+                  )
+              }}
+          />
+          <Route path="/login" component={Login}></Route>
           <Layout>
               <Route exact path="/dashboard" component={Dashboard}></Route>
               <Route path="/subscription" component={Subscription}></Route>
