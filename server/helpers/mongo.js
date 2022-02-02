@@ -10,12 +10,11 @@ const databaseInitializer = async function (uri) {
     // }); 
 
    //Prod
-    mongoose.connect(uri, {useNewUrlParser: true, ssl: true, sslValidate: false, sslCA: `rds-combined-ca-bundle.pem`}).then(function(client){
+    mongoose.connect(uri, {useNewUrlParser: true, ssl: false, sslValidate: false, sslCA: `rds-combined-ca-bundle.pem`}).then(function(client){
         console.log('Mongoose connected:');
     }).catch(function(error){
         console.log('Mongoose connection URI error:',  error);
     }); 
-    
 }
 
 module.exports = {
