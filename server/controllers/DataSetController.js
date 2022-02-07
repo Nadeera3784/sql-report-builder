@@ -133,13 +133,14 @@ const DataSetController = {
             return;
         }else{
             const id = request.params.id;
+            const org_id = request.user.org_id;
             const dataset = await Datasets.service.findByID(id);
             const {attributes, event, organization, response_type} = request.body;
             let parameters = {};
             parameters.dataset = dataset;
             parameters.attributes = attributes;
             parameters.event = event;
-            parameters.organization = organization;
+            parameters.organization = org_id;
             parameters.response_type = response_type;
             await Builder.QuickReportBuilder(parameters, response);
         }

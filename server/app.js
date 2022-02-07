@@ -38,7 +38,7 @@ app.use(bodyParser.urlencoded({
 
 app.use(cors());
 
-databaseInitializer("mongodb://o2oReportingDBMaster:SccEWDcAS2@o2o-reporting-db-public.cluster-capzd9fgxyee.ap-southeast-1.docdb.amazonaws.com:27017/o2o-report?tls=true&replicaSet=rs0&readPreference=secondaryPreferred&retryWrites=false");
+databaseInitializer(config_database.database.mongodb.host);
 
 app.use(express.static(path.join(dir_base, 'public')));
 

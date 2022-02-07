@@ -22,7 +22,7 @@ router.get('/datasets',  tokenGuard, DataSetController.getAllDataSets);
 
 router.get('/datasets/:id', DataSetController.getDataSetsByID);
 
-router.post('/datasets/:id', 
+router.post('/datasets/:id', tokenGuard,
 [
     check('attributes')
     .not().isEmpty()
@@ -30,10 +30,9 @@ router.post('/datasets/:id',
 ],
 DataSetController.createQuickReport);
 
-router.get('/datasets/custom-report/:id',  DataSetController.createReportFromCustomReport);
+router.get('/datasets/custom-report/:id',  tokenGuard, DataSetController.createReportFromCustomReport);
 
-router.get('/datasets/events/:id', DataSetController.getEventsByOrganizationID);
-
+router.get('/datasets/events/:id', tokenGuard, DataSetController.getEventsByOrganizationID);
 
 router.get('/custom-reports', tokenGuard, DataSetController.getAllCustomReports);
 
