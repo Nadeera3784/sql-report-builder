@@ -376,10 +376,11 @@ Dataset_Model.insertMany([
         ],
         query_where : {
             company_field : 'attendees.company_id',
+            default_field : 'GROUP BY people.id',
             event_field : 'attendees.event_id',
             event : true,
             company : true,
-            default : false
+            default : true
         },
         query_join : "INNER JOIN people ON attendees.o2o_id = people.id",
         query_count: 'COUNT(attendees.id) AS number_of_records',
