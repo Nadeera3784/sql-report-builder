@@ -376,7 +376,7 @@ Dataset_Model.insertMany([
         ],
         query_where : {
             company_field : 'attendees.company_id',
-            default_field : 'GROUP BY people.id',
+            default_field : 'people.deleted_at IS NULL GROUP BY people.id',
             event_field : 'attendees.event_id',
             event : true,
             company : true,
