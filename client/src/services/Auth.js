@@ -1,10 +1,10 @@
 export default {
 
     getToken(){
-      return  localStorage.getItem("o2o-app-key");
+      return  localStorage.getItem("auth-app-key");
     },
 
     deleteToken(){
-        return localStorage.removeItem("o2o-app-key")
+        return localStorage.removeItem("auth-app-key")
     }
 }
