@@ -17,9 +17,9 @@ Scheduler.runner = async function () {
                 if(query_date === now_date){
                     const id = data[index].custom_report_id;
                     const report_path = Builder.CustomReportBuilder(id, null);
-                    const sendTo = (data[index].email != undefined) ? data[index].email : "kella650018@gmail.com";
+                    const sendTo = (data[index].email != undefined) ? data[index].email : "support@test.dev";
                     const mailData = {
-                        from: 'nadeera@helium.lk',
+                        from: 'support@test.dev',
                         to : sendTo,
                         subject : 'Scheduled report',
                         html : '<p>Your scheduled report for '+ query_date +'</p>'
