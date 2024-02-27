@@ -22,7 +22,7 @@ const AppReducer = (state, action) => {
                 cookie_consent : !state.cookie_consent
             };
         case AppConstants.AUTH_SET_TOKEN:
-            localStorage.setItem("o2o-app-key", action.payload);
+            localStorage.setItem("auth-app-key", action.payload);
             return state;
         case AppConstants.AUTH_SET_USER:
             return {
