@@ -7,3 +7,15 @@ Behind the scenes, the backend of the system is powered by ExpressJS, providing 
 Furthermore, the system includes an analytics page within the frontend interface, enabling users to gain insights into their data through visualizations and statistical analysis. This analytics feature enhances the overall utility of the platform by empowering users to derive meaningful insights from their reports.
 
 In summary, the reporting system offers a comprehensive suite of features, including report customization, scheduling, email delivery, and analytics, all seamlessly integrated into a user-friendly interface for enhanced usability and productivity.
+
+## Tech
+
+- ReactJS
+- Tailwind
+- ExpressJS
+- MongodDB
+- Mongoose
+- Sequelize
+- Node cron
+- Nodemailer
+
