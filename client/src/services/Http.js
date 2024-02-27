@@ -2,9 +2,7 @@ import axios from 'axios';
 import AuthService from './Auth';
 
 const http = axios.create({
-    //baseURL: 'http://o2o-reporting-prod.eu-central-1.elasticbeanstalk.com/api/v1',
-    baseURL: 'http://o2o-reporting-v1-env.eba-sms26npm.ap-southeast-1.elasticbeanstalk.com/api/v1',
-    //baseURL: 'http://127.0.0.1:3030/api/v1',
+    baseURL: 'http://127.0.0.1:3030/api/v1',
 })
 
 
